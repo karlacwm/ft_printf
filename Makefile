@@ -18,7 +18,7 @@ RM = rm -f
 
 all: $(LIBFT) $(NAME)
 
-$(LIBFT_A):
+$(LIBFT):
 	make -C $(LIBFT_DIR) all
 
 $(NAME): $(LIBFT) $(OBJ)
