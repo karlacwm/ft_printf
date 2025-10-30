@@ -1,8 +1,8 @@
 NAME = libftprintf.a
 
 LIBFT_DIR = ./libft
-LIBFT_A = $(LIBFT_DIR)/libft.a
-LIBFT = -L$(LIBFT_DIR) -lft
+LIBFT = $(LIBFT_DIR)/libft.a
+LIBFT_LINK = -L$(LIBFT_DIR) -lft
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -16,13 +16,14 @@ OBJ = ${SRCS:%.c=%.o}
 
 RM = rm -f
 
-all: $(LIBFT_A) $(NAME)
+all: $(LIBFT) $(NAME)
 
 $(LIBFT_A):
 	make -C $(LIBFT_DIR) all
 
-$(NAME): $(OBJ)
+$(NAME): $(LIBFT) $(OBJ)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJ)
+	$(AR) $(ARFLAGS) $(NAME) $(LIBFT)
 
 clean:
 	$(RM) $(OBJ)

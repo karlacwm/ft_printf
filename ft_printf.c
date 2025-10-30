@@ -12,27 +12,40 @@
 
 #include "ft_printf.h"
 
-void	ft_type()
+void	ft_type(char specifier, va_list args)
 {
+	// cspdiuxX%
 	// if % is found, select a type
-	if ( == 'c')
-	if ( == 's')
+	// va_arg(args, int);
+	if (specifier == 'c')
+	{
+		va_arg(args, int);
+		//putchar
+	}
+	if (specifier == 's')
+	{
+		va_arg(args, char*);
+		//putstr
+	}
+	if ( == '%')
+	{
+		// put %
+	}
 }
 
 int	ft_printf(const char *str, ...)
 {
 	int	count;
-	// va_list	args;
+	va_list	args;
 
 	if (!str)
-		return (0);
+		return (-1);
 	va_start(args , str);
 	while (*str)
 	{
 		if (*str == '%')
 		{
 			str++;
-			count++;
 		}
 		else
 		{
@@ -40,12 +53,8 @@ int	ft_printf(const char *str, ...)
 			str++;
 			count++;
 		}
-
 	}
-
-	// va_arg(args, char*);
-	// va_arg(args, int);
-	va_end(list);
+	va_end(args);
 	return (count);
 }
 // count how many characters are printed
