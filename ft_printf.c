@@ -39,22 +39,6 @@ int	print_int(int n)
 	return (digits);
 }
 
-char	unsigned_itoa(unsigned int n)
-{
-	char			*str;
-	size_t			digits;
-	unsigned int	num;
-
-	num = n;
-	digits = 0;
-	while (num >= 10)
-	{
-		num = num / 10;
-		digits++;
-	}
-	str = 
-}
-
 int	print_unsigned()
 
 
