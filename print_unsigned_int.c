@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static size_t	ft_digit_count_unsigned(long n)
+static size_t	ft_digit_count_unsigned(unsigned int n)
 {
 	size_t	n_len;
 
@@ -27,25 +27,23 @@ static size_t	ft_digit_count_unsigned(long n)
 	return (n_len);
 }
 
-char	*ft_unsigned_itoa(int n)
+char	*ft_unsigned_itoa(unsigned int n)
 {
 	size_t			n_len;
-	unsigned int	num;
 	char			*str;
 
-	num = n;
-	n_len = ft_digit_count_unsigned(num);
+	n_len = ft_digit_count_unsigned(n);
 	str = (char *)malloc(sizeof(char) * (n_len + 1));
 	if (!str)
 		return (NULL);
 	str[n_len] = '\0';
 	n_len--;
-	if (num == 0)
+	if (n == 0)
 		str[0] = '0';
-	while (num > 0)
+	while (n > 0)
 	{
-		str[n_len] = (num % 10) + '0';
-		num = num / 10;
+		str[n_len] = (n % 10) + '0';
+		n = n / 10;
 		n_len--;
 	}
 	return (str);
@@ -57,8 +55,14 @@ int	print_unsigned(unsigned int n)
 	size_t	digits;
 
 	a = ft_unsigned_itoa(n);
-	ft_putstr_fd(a, 1);
+	if (!a)
+		return (-1);
 	digits = ft_strlen(a);
+	if (write (1, a, digits) == -1)
+	{
+		free(a);
+		return (-1);
+	}
 	free(a);
 	return (digits);
 }

@@ -25,23 +25,24 @@ int ft_type(char specifier, va_list args)
 	if (specifier == 's')
 		count = print_str(va_arg(args, char *));
 	if (specifier == 'p')
+		count = 0;
 	if (specifier == 'd' || specifier == 'i')
 		count = print_int(va_arg(args, int));
 	if (specifier == 'u')
-		count = print_unsigned(va_arg(args, int));
+		count = print_unsigned(va_arg(args, unsigned int));
 	if (specifier == 'x')
+		count = 0;
 	if (specifier == 'X')
+		count = 0;
 	if (specifier == '%')
-	{
-		ft_putchar_fd("%%", 1);
-		count = 1;
-	}
+		count = print_char('%');
 	return (count);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	int		total_count;
+	// where is my count
 	va_list	args;
 
 	if (!str)
@@ -54,10 +55,12 @@ int	ft_printf(const char *str, ...)
 		{
 			str++;
 			// if it's format specifier after, count printed length
+			if (ft_strchr("cspdiuxX%", *str))
+				ft_type(*str);
 		}
 		else
 		{
-			ft_putchar_fd(*str, 1);
+			ft_putchar_fd(*str, 1); //cant use fd...
 			total_count++;
 		}
 		str++;
