@@ -10,7 +10,7 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar
 ARFLAGS = -rcs
 
-SRCS = ft_printf.c
+SRCS = ft_printf.c print_func.c print_unsigned_int.c print_unsigned_hex.c
 
 OBJ = ${SRCS:%.c=%.o}
 
@@ -19,7 +19,7 @@ RM = rm -f
 all: $(LIBFT) $(NAME)
 
 $(LIBFT):
-	make -C $(LIBFT_DIR) all
+	make -C $(LIBFT_DIR)
 
 $(NAME): $(LIBFT) $(OBJ)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJ)
