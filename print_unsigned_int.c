@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_unsigned.c                                   :+:      :+:    :+:   */
+/*   print_unsigned_int.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wcheung <wcheung@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 09:09:47 by wcheung           #+#    #+#             */
-/*   Updated: 2025/10/31 10:11:09 by wcheung          ###   ########.fr       */
+/*   Updated: 2025/11/02 20:19:08 by wcheung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_unsigned_itoa(unsigned int n)
 	return (str);
 }
 
-int	print_unsigned(unsigned int n)
+int	print_unsigned_int(unsigned int n)
 {
 	char	*a;
 	size_t	digits;

@@ -6,7 +6,7 @@
 /*   By: wcheung <wcheung@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 09:09:42 by wcheung           #+#    #+#             */
-/*   Updated: 2025/10/31 11:59:45 by wcheung          ###   ########.fr       */
+/*   Updated: 2025/11/02 20:34:18 by wcheung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	print_char(int c)
 
 int	print_str(char *str)
 {
-
 	size_t	str_len;
 
 	if (!str)

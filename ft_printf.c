@@ -6,34 +6,37 @@
 /*   By: wcheung <wcheung@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 11:09:52 by wcheung           #+#    #+#             */
-/*   Updated: 2025/10/31 11:45:39 by wcheung          ###   ########.fr       */
+/*   Updated: 2025/11/02 21:43:07 by wcheung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// cspdiuxX%
+// if % is found, select a type
+// va_arg(args, int);
+// char str[]= "aaaa";
+// printf("%s %d %p", str);
+
 #include "ft_printf.h"
 
-int ft_type(char specifier, va_list args)
+int	ft_type(char specifier, va_list args)
 {
 	int	count;
 
-	// cspdiuxX%
-	// if % is found, select a type
-	// va_arg(args, int);
 	count = 0;
 	if (specifier == 'c')
 		count = print_char(va_arg(args, int));
 	if (specifier == 's')
 		count = print_str(va_arg(args, char *));
 	if (specifier == 'p')
-		count = 0;
+		count = print_pointer(va_arg(args, void *));
 	if (specifier == 'd' || specifier == 'i')
 		count = print_int(va_arg(args, int));
 	if (specifier == 'u')
-		count = print_unsigned(va_arg(args, unsigned int));
+		count = print_unsigned_int(va_arg(args, unsigned int));
 	if (specifier == 'x')
-		count = 0;
+		count = print_hex(va_arg(args, unsigned int), "0123456789abcdef");
 	if (specifier == 'X')
-		count = 0;
+		count = print_hex(va_arg(args, unsigned int), "0123456789ABCDEF");
 	if (specifier == '%')
 		count = print_char('%');
 	return (count);
