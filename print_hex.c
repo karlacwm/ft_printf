@@ -6,7 +6,7 @@
 /*   By: wcheung <wcheung@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 10:24:39 by wcheung           #+#    #+#             */
-/*   Updated: 2025/11/02 21:38:18 by wcheung          ###   ########.fr       */
+/*   Updated: 2025/11/03 15:18:31 by wcheung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int	print_hex(unsigned int n, char *base)
 
 	hex_count = 0;
 	if (n >= 16)
-		hex_count = hex_count + print_hex(n / 16, base);
-	hex_count = hex_count + print_char(n % 16, base);
+		hex_count += print_hex(n / 16, base);
+	hex_count += print_char(base[n % 16]);
 	return (hex_count);
 }
 
-int	print_pointer()
-{
+// int	print_pointer()
+// {
 
-}
+// }

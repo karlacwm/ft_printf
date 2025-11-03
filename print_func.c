@@ -6,7 +6,7 @@
 /*   By: wcheung <wcheung@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 09:09:42 by wcheung           #+#    #+#             */
-/*   Updated: 2025/11/02 20:34:18 by wcheung          ###   ########.fr       */
+/*   Updated: 2025/11/03 11:48:29 by wcheung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	print_int(int n)
 	size_t	digits;
 
 	a = ft_itoa(n);
+	digits = ft_strlen(a);
 	if (!a)
 		return (-1);
 	if (write (1, a, digits) == -1)

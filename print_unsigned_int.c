@@ -6,7 +6,7 @@
 /*   By: wcheung <wcheung@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 09:09:47 by wcheung           #+#    #+#             */
-/*   Updated: 2025/11/02 20:19:08 by wcheung          ###   ########.fr       */
+/*   Updated: 2025/11/03 11:33:41 by wcheung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static size_t	ft_digit_count_unsigned(unsigned int n)
 	return (n_len);
 }
 
-char	*ft_unsigned_itoa(unsigned int n)
+static char	*ft_unsigned_itoa(unsigned int n)
 {
 	size_t			n_len;
 	char			*str;
