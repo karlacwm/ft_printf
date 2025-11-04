@@ -6,7 +6,7 @@
 /*   By: wcheung <wcheung@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 12:38:46 by wcheung           #+#    #+#             */
-/*   Updated: 2025/11/03 15:55:06 by wcheung          ###   ########.fr       */
+/*   Updated: 2025/11/04 15:00:19 by wcheung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ int	print_str(char *str);
 int	print_int(int n);
 int	print_hex(unsigned int n, char *base);
 int	print_unsigned_int(unsigned int n);
-// int	print_pointer();
+int	print_pointer(void *ptr);
 
 #endif

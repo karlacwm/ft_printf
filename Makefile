@@ -37,11 +37,3 @@ re:
 	$(MAKE) all
 
 .PHONY: all clean fclean re
-
-# -lft library named libft
-# -C change directory
-# -L./libft look for libraries, search inside libft directory
-
-# for testing:
-# cc main.c libftprintf.a libft/libft.a
-# cc main.c -L. -L./libft -lftprintf -lft

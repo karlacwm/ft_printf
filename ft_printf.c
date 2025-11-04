@@ -6,15 +6,9 @@
 /*   By: wcheung <wcheung@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 11:09:52 by wcheung           #+#    #+#             */
-/*   Updated: 2025/11/03 15:54:54 by wcheung          ###   ########.fr       */
+/*   Updated: 2025/11/04 18:18:19 by wcheung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// cspdiuxX%
-// if % is found, select a type
-// va_arg(args, int);
-// char str[]= "aaaa";
-// printf("%s %d %p", str);
 
 #include "ft_printf.h"
 
@@ -27,8 +21,8 @@ static int	ft_type(char specifier, va_list args)
 		count = print_char(va_arg(args, int));
 	else if (specifier == 's')
 		count = print_str(va_arg(args, char *));
-	// else if (specifier == 'p')
-	// 	count = print_pointer();
+	else if (specifier == 'p')
+		count = print_pointer(va_arg(args, void *));
 	else if (specifier == 'd' || specifier == 'i')
 		count = print_int(va_arg(args, int));
 	else if (specifier == 'u')
@@ -40,6 +34,24 @@ static int	ft_type(char specifier, va_list args)
 	else if (specifier == '%')
 		count = print_char('%');
 	return (count);
+}
+
+static int	check_format(const char **str_ptr, va_list args, int *total_count)
+{
+	const char	*str;
+
+	str = *str_ptr + 1;
+	if (*str == '\0' || *str == ' ')
+		return (-1);
+	if (ft_strchr("cspdiuxX%", *str))
+		*total_count += ft_type(*str, args);
+	else
+	{
+		write(1, --str, 1);
+		(*total_count)++;
+	}
+	*str_ptr = str;
+	return (0);
 }
 
 int	ft_printf(const char *str, ...)
@@ -55,9 +67,8 @@ int	ft_printf(const char *str, ...)
 	{
 		if (*str == '%')
 		{
-			str++;
-			if (ft_strchr("cspdiuxX%", *str))
-				total_count += ft_type(*str, args);
+			if (check_format(&str, args, &total_count) == -1)
+				return (va_end(args), -1);
 		}
 		else
 		{
@@ -69,4 +80,45 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (total_count);
 }
-// count the total of how many characters are printed
+
+// int	ft_printf(const char *str, ...)
+// {
+// 	int		total_count;
+// 	va_list	args;
+
+// 	if (!str)
+// 		return (-1);
+// 	total_count = 0;
+// 	va_start(args, str);
+// 	while (*str)
+// 	{
+// 		if (*str == '%')
+// 		{
+// 			str++;
+// 			if (*str == '\0' || *str == ' ')
+// 				return (va_end(args),-1);
+// 			if (ft_strchr("cspdiuxX%", *str))
+// 				total_count += ft_type(*str, args);
+// 			else
+// 			{
+// 				write(1, --str, 1);
+// 				total_count++;
+// 			}
+// 		}
+// 		else
+// 		{
+// 			write(1, str, 1);
+// 			total_count++;
+// 		}
+// 		str++;
+// 	}
+// 	return (va_end(args), total_count);
+// }
+
+// -lft library named libft
+// -C change directory
+// -L./libft look for libraries, search inside libft directory
+
+// for testing:
+// cc main.c libftprintf.a libft/libft.a
+// cc main.c -L. -L./libft -lftprintf -lft
