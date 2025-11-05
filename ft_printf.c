@@ -6,7 +6,7 @@
 /*   By: wcheung <wcheung@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 11:09:52 by wcheung           #+#    #+#             */
-/*   Updated: 2025/11/04 18:25:32 by wcheung          ###   ########.fr       */
+/*   Updated: 2025/11/05 17:45:28 by wcheung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	check_format(const char **str_ptr, va_list args, int *total_count)
 	const char	*str;
 
 	str = *str_ptr + 1;
-	if (*str == '\0' || *str == ' ')
+	if (*str == '\0')
 		return (-1);
 	if (ft_strchr("cspdiuxX%", *str))
 		*total_count += ft_type(*str, args);

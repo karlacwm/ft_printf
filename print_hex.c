@@ -6,7 +6,7 @@
 /*   By: wcheung <wcheung@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 10:24:39 by wcheung           #+#    #+#             */
-/*   Updated: 2025/11/04 18:25:41 by wcheung          ###   ########.fr       */
+/*   Updated: 2025/11/05 14:52:35 by wcheung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,40 @@
 int	print_hex(unsigned int n, char *base)
 {
 	int	hex_count;
+	int	printed;
 
 	hex_count = 0;
 	if (n >= 16)
-		hex_count += print_hex(n / 16, base);
-	hex_count += print_char(base[n % 16]);
+	{
+		printed = print_hex(n / 16, base);
+		if (printed == -1)
+			return (-1);
+		hex_count += printed;
+	}
+	printed = print_char(base[n % 16]);
+	if (printed == -1)
+		return (-1);
+	hex_count += printed;
 	return (hex_count);
 }
 
 static int	print_long_hex(unsigned long long_n, char *base)
 {
 	int	long_hex_count;
+	int	printed;
 
 	long_hex_count = 0;
 	if (long_n >= 16)
-		long_hex_count += print_long_hex(long_n / 16, base);
-	long_hex_count += print_char(base[long_n % 16]);
+	{
+		printed = print_long_hex(long_n / 16, base);
+		if (printed == -1)
+			return (-1);
+		long_hex_count += printed;
+	}
+	printed = print_char(base[long_n % 16]);
+	if (printed == -1)
+		return (-1);
+	long_hex_count += printed;
 	return (long_hex_count);
 }
 
