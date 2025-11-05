@@ -6,7 +6,7 @@
 /*   By: wcheung <wcheung@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 10:24:39 by wcheung           #+#    #+#             */
-/*   Updated: 2025/11/04 18:22:27 by wcheung          ###   ########.fr       */
+/*   Updated: 2025/11/04 18:25:41 by wcheung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,3 @@ int	print_pointer(void *ptr)
 	pointer_count += print_long_hex(temp, "0123456789abcdef");
 	return (pointer_count);
 }
-
-// base = "0123456789abcdef";
-// write(1, &base[n / 16], 1);
-// write(1, &base[n % 16], 1);
